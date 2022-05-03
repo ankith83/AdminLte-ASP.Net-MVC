@@ -1,0 +1,24 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	@Styles.Render("~/Content/admincss")
+</head>
+<body class="hold-transition layout-top-nav">
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@{ Html.RenderPartial("_MainMenu"); }
+	<div class="wrapper">
+		@RenderBody()
+	</div>
+	<footer class="main-footer login-footer fixed-bottom">
+		<strong>Copyright &copy; @DateTime.Now.Year </strong> All rights reserved.
+	</footer>
+</body>
+</html>
