@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShoppingAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AddToCart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SessionId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Quantity" Type="Int64" />
+    <Property Name="TotalAmount" Type="Double" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_AddToCart_Products" FromRole="AddToCart" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" />
+    <NavigationProperty Name="Categories1" Relationship="Self.FK_Categories_SubCategories" FromRole="Categories" ToRole="Categories1" />
+    <NavigationProperty Name="Category1" Relationship="Self.FK_Categories_SubCategories" FromRole="Categories1" ToRole="Categories" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int32" Nullable="false" />
+    <Property Name="CityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StateId" Type="Int32" Nullable="false" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Cities_Countries" FromRole="Cities" ToRole="Countries" />
+    <NavigationProperty Name="State" Relationship="Self.FK_Cities_States" FromRole="Cities" ToRole="States" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Cities" FromRole="Cities" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="CountryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_Countries" FromRole="Countries" ToRole="Cities" />
+    <NavigationProperty Name="States" Relationship="Self.FK_States_Countries" FromRole="Countries" ToRole="States" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Countries" FromRole="Countries" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Controller" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Action" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="StackTrace" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK_ErrorLogs_Users" FromRole="ErrorLogs" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="SessionId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShipToFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToAddress" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="ShipToCityId" Type="Int32" Nullable="false" />
+    <Property Name="ShipToCountryId" Type="Int32" Nullable="false" />
+    <Property Name="ShipToStateId" Type="Int32" Nullable="false" />
+    <Property Name="ShipToZip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="BillToFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BillToLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BillToEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BillToPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BillToAddress" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="BillToCityId" Type="Int32" Nullable="false" />
+    <Property Name="BillToCountryId" Type="Int32" Nullable="false" />
+    <Property Name="BillToStateId" Type="Int32" Nullable="false" />
+    <Property Name="BillToZip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShippingAmount" Type="Double" />
+    <Property Name="Tax" Type="Double" />
+    <Property Name="GrandTotal" Type="Double" Nullable="false" />
+    <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UPC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OnSale" Type="Boolean" Nullable="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Weight" Type="Double" />
+    <Property Name="Image1" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Image2" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Image3" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Image4" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Image5" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AddToCarts" Relationship="Self.FK_AddToCart_Products" FromRole="Products" ToRole="AddToCart" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="RecentlyVieweds" Relationship="Self.FK_RecentlyViewed_Products" FromRole="Products" ToRole="RecentlyViewed" />
+  </EntityType>
+  <EntityType Name="RecentlyViewed">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SessionId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="ViewedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_RecentlyViewed_Products" FromRole="RecentlyViewed" ToRole="Products" />
+    <NavigationProperty Name="User" Relationship="Self.FK_RecentlyViewed_Users" FromRole="RecentlyViewed" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="ShoppingAppModel.FK_Users_Roles" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int32" Nullable="false" />
+    <Property Name="StateCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StateName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_States" FromRole="States" ToRole="Cities" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_States_Countries" FromRole="States" ToRole="Countries" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_States" FromRole="States" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="SystemSetting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Property" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="LastModifiedBy" Type="Int32" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Users_Cities" FromRole="Users" ToRole="Cities" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Users_Countries" FromRole="Users" ToRole="Countries" />
+    <NavigationProperty Name="ErrorLogs" Relationship="Self.FK_ErrorLogs_Users" FromRole="Users" ToRole="ErrorLogs" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Users" FromRole="Users" ToRole="Orders" />
+    <NavigationProperty Name="RecentlyVieweds" Relationship="Self.FK_RecentlyViewed_Users" FromRole="Users" ToRole="RecentlyViewed" />
+    <NavigationProperty Name="State" Relationship="Self.FK_Users_States" FromRole="Users" ToRole="States" />
+    <NavigationProperty Name="Role" Relationship="ShoppingAppModel.FK_Users_Roles" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_AddToCart_Products">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="AddToCart" Type="Self.AddToCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddToCart">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Categories_SubCategories">
+    <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Categories1" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Categories1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Categories">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cities_Countries">
+    <End Role="Countries" Type="Self.Country" Multiplicity="1" />
+    <End Role="Cities" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Cities">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cities_States">
+    <End Role="States" Type="Self.State" Multiplicity="1" />
+    <End Role="Cities" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="Cities">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Cities">
+    <End Role="Cities" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_States_Countries">
+    <End Role="Countries" Type="Self.Country" Multiplicity="1" />
+    <End Role="States" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="States">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Countries">
+    <End Role="Countries" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ErrorLogs_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ErrorLogs" Type="Self.ErrorLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ErrorLogs">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecentlyViewed_Products">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="RecentlyViewed" Type="Self.RecentlyViewed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RecentlyViewed">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecentlyViewed_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="RecentlyViewed" Type="Self.RecentlyViewed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RecentlyViewed">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_States">
+    <End Role="States" Type="Self.State" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShoppingAppEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AddToCarts" EntityType="Self.AddToCart" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Cities" EntityType="Self.City" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="ErrorLogs" EntityType="Self.ErrorLog" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="RecentlyVieweds" EntityType="Self.RecentlyViewed" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <EntitySet Name="SystemSettings" EntityType="Self.SystemSetting" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_AddToCart_Products" Association="Self.FK_AddToCart_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="AddToCart" EntitySet="AddToCarts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Categories_SubCategories" Association="Self.FK_Categories_SubCategories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Categories1" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Cities" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cities_States" Association="Self.FK_Cities_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Cities" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Cities" Association="Self.FK_Users_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_States_Countries" Association="Self.FK_States_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="States" EntitySet="States" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Countries" Association="Self.FK_Users_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ErrorLogs_Users" Association="Self.FK_ErrorLogs_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ErrorLogs" EntitySet="ErrorLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Users" Association="Self.FK_Orders_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecentlyViewed_Products" Association="Self.FK_RecentlyViewed_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="RecentlyViewed" EntitySet="RecentlyVieweds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecentlyViewed_Users" Association="Self.FK_RecentlyViewed_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RecentlyViewed" EntitySet="RecentlyVieweds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_States" Association="Self.FK_Users_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="ShoppingAppModel.FK_Users_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Users_Roles">
+    <End Type="ShoppingAppModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="ShoppingAppModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

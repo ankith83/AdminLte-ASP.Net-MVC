@@ -51,6 +51,7 @@ C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\roslyn\vbc.rsp
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\roslyn\VBCSCompiler.exe
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\Antlr3.Runtime.dll
+C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\DataLayer.dll
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\Newtonsoft.Json.dll
@@ -62,6 +63,9 @@ C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\System.Web.WebPages.Dep
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\System.Web.WebPages.dll
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\System.Web.WebPages.Razor.dll
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\WebGrease.dll
+C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\EntityFramework.dll
+C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\DataLayer.pdb
+C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\DataLayer.dll.config
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\System.Web.Helpers.xml
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\System.Web.Mvc.xml
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\System.Web.Optimization.xml
@@ -72,8 +76,11 @@ C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\System.Web.WebPages.Raz
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\Newtonsoft.Json.xml
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\Antlr3.Runtime.pdb
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\EntityFramework.xml
+C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\obj\Debug\MyShopWeb.csproj.AssemblyReference.cache
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\obj\Debug\MyShopWeb.csproj.CoreCompileInputs.cache
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\obj\Debug\MyShopWeb.csproj.CopyComplete
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\obj\Debug\MyShopWeb.dll
 C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\obj\Debug\MyShopWeb.pdb
-C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\obj\Debug\MyShopWeb.csproj.AssemblyReference.cache
+C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\EntityFramework.SqlServer.dll
+C:\Users\ankit\source\repos\ShoppingPortal\MyShopWeb\bin\EntityFramework.SqlServer.xml

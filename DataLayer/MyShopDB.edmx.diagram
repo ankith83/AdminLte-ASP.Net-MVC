@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="687b0d1ba60a407d8d7051b8a1e20d69" Name="Diagram1">
+        <EntityTypeShape EntityType="ShoppingAppModel.AddToCart" Width="1.5" PointX="12.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingAppModel.Category" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingAppModel.City" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingAppModel.Country" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingAppModel.ErrorLog" Width="1.5" PointX="9.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingAppModel.Order" Width="1.5" PointX="9.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingAppModel.Product" Width="1.5" PointX="10.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingAppModel.RecentlyViewed" Width="1.5" PointX="12.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingAppModel.Role" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingAppModel.State" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingAppModel.SystemSetting" Width="1.5" PointX="2.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingAppModel.User" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="ShoppingAppModel.FK_AddToCart_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_Categories_SubCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_Cities_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_Cities_States" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_Users_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_States_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_Users_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_ErrorLogs_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_Orders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_RecentlyViewed_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_RecentlyViewed_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_Users_States" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoppingAppModel.FK_Users_Roles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

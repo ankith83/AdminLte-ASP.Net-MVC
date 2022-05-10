@@ -15,12 +15,16 @@
 <body class="hold-transition sidebar-mini layout-footer-fixed">
 	<!-- Site wrapper -->
 	<div class="wrapper">
-		
+
 		@Html.Partial("_AdminSideBar")
-		
+
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
-			@RenderBody()
+			<div class="content">
+				<div class="container-fluid">
+					@RenderBody()
+				</div>
+			</div>
 		</div>
 		<!-- /.content-wrapper -->
 

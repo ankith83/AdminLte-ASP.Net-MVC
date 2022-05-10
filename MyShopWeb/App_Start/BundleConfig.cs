@@ -31,6 +31,8 @@ namespace MyShopWeb
 
 			bundles.Add(new StyleBundle("~/Content/charts").Include(
 					  "~/Content/plugins/charts/Chart.css"));
+
+
 		}
 	}
 }
